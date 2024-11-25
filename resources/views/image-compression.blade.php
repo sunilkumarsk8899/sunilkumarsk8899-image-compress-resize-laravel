@@ -24,8 +24,8 @@
           </div>
         </div>
         <div class="row checkboxes">
-          <div class="column ratio">
-            <input type="checkbox" id="ratio" checked>
+          <div class="column ratio text-center" >
+            <input type="checkbox" id="ratio" style="margin-top: 5px;" checked>
             <label for="ratio">Lock aspect ratio</label>
           </div>
           <div class="column quality">
@@ -37,15 +37,15 @@
       </div>
 
 
-    <div class="row">
+
+    </div>
+
+    <div class="row m-0">
         <div class="col">
-            <div class="img-cards" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+            <div class="img-cards" style="">
             </div>
         </div>
     </div>
-    </div>
-
-
 
 
 

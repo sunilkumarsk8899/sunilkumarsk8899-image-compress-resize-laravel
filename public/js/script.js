@@ -25,6 +25,7 @@ const loadFile = (e) => {
 
         img.src = URL.createObjectURL(file); // passing selected file url to img src
         img.classList.add('responsive-img');
+
         deleteButton.textContent = 'X'; // set button text
         deleteButton.classList.add('delete-button'); // add a class for styling if needed
 
@@ -76,11 +77,19 @@ const resizeAndDownloadMultiple = () => {
     // 1.0 is 100% quality where 0.5 is 50% of total. you can pass from 0.1 - 1.0
     const imgQuality = qualityInput.checked ? 0.5 : 1.0;
 
-    console.log('hello',images);
-    images.splice(2);
-    console.log('hello',images);
-    return;
+    // Create a progress indicator
+    const progressIndicator = document.createElement('div');
+    progressIndicator.id = 'progressIndicator';
+    progressIndicator.style.position = 'fixed';
+    progressIndicator.style.top = '10px';
+    progressIndicator.style.left = '10px';
+    progressIndicator.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    progressIndicator.style.color = 'white';
+    progressIndicator.style.padding = '10px';
+    progressIndicator.style.borderRadius = '5px';
+    document.body.appendChild(progressIndicator);
 
+    let completedDownloads = 0;
 
     images.forEach((previewImg, index) => {
         const canvas = document.createElement("canvas");
@@ -100,6 +109,20 @@ const resizeAndDownloadMultiple = () => {
         document.body.appendChild(a); // Append to body
         a.click(); // Trigger download
         document.body.removeChild(a); // Remove from body
+
+        // Update progress
+        completedDownloads++;
+        progressIndicator.innerText = `Downloaded ${completedDownloads} of ${images.length} images...`;
+
+        // Check if all downloads are completed
+        if (completedDownloads === images.length) {
+            setTimeout(() => {
+                progressIndicator.innerText = 'All downloads completed successfully!';
+                setTimeout(() => {
+                    document.body.removeChild(progressIndicator); // Remove progress indicator after a short delay
+                }, 2000);
+            }, 100); // Delay to allow the last download to register
+        }
     });
 }
 

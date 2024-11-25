@@ -7,9 +7,9 @@
           font-family: 'Poppins', sans-serif;
         }
         body{
-          display: flex;
+          /* display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: center; */
           min-height: 100vh;
           background: #927DFC;
         }
@@ -20,6 +20,7 @@
           background: #fff;
           border-radius: 9px;
           transition: height 0.2s ease;
+          margin: auto;
         }
         .wrapper.active{
           height: 537px;
@@ -45,8 +46,8 @@
           display: none;
         }
         .wrapper.active .upload-box img{
-          width: 100%;
-          height: 100%;
+          /* width: 100%;
+          height: 100%; */
           object-fit: cover;
           border-radius: 5px;
         }
@@ -119,26 +120,20 @@
         }
 
         .responsive-img {
-            max-width: 100%; /* Make images scale to fit */
-            height: auto; /* Maintain aspect ratio */
-            width: calc(100% / 2 - 1rem); /* Adjust width dynamically (4 images per row) */
+            max-width: 400px; /* Make images scale to fit */
+            height: 400px; /* Maintain aspect ratio */
+            width: calc(100% / 1 - 1rem); /* Adjust width dynamically (4 images per row) */
             object-fit: cover; /* Crop or fit images nicely */
             border-radius: 8px; /* Optional: Rounded corners */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Shadow for better appearance */
         }
 
-        /* Responsive breakpoints */
-        @media (max-width: 768px) {
-            .responsive-img {
-                width: calc(100% / 2 - 1rem); /* Adjust to 2 images per row */
-            }
+
+        .img-cards{
+            display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;margin-top:5%
         }
 
-        @media (max-width: 480px) {
-            .responsive-img {
-                width: 100%; /* Adjust to 1 image per row */
-            }
-        }
+
 
 
 
@@ -146,9 +141,44 @@
         .img-cards div button {
             position: relative;
             right: 5%;
-            bottom: 48%;
+            bottom: 96%;
             border-radius: 50%;
             width: 35px;
             height: 35px;
             border: none;
+            margin-top: 12%;
         }
+
+
+
+
+        .img-cards div {
+            width: 20%;
+            height: auto;
+            padding: 0;
+            margin: 0;
+        }
+
+
+
+
+
+
+                /* Responsive breakpoints */
+                @media (max-width: 768px) {
+                    .responsive-img {
+                        width: calc(100% / 2 - 1rem); /* Adjust to 2 images per row */
+                    }
+                    .wrapper{
+                        width: auto;
+                    }
+                    .img-cards div{
+                        width: 100%;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .responsive-img {
+                        width: 100%; /* Adjust to 1 image per row */
+                    }
+                }
